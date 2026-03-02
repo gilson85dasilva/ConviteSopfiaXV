@@ -1,0 +1,865 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* custom scrollbar for modern look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(165,108,108,0.5);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(165,108,108,0.7);
+}
+
+:root {
+    --bg-light: #f5d5d5;
+    --accent-pink: #d87a94;
+    --muted-rose: #c1335d;
+    --primary-rose: #9d1c4d;
+    --text-brown: #7d1547;
+    --dark-brown: #5a0d35;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Particles */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Splash Screen Styles (Simple Version) */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../image/petalas.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: opacity 1s ease-out, visibility 1s;
+}
+
+.splash-content {
+    text-align: center;
+    padding: 60px;
+    border-radius: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.15);
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 2);
+    animation: contentFadeIn 2.5s ease-out forwards, subtleFloat 10s ease-in-out infinite;
+    z-index: 2;
+}
+
+.splash-content:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.splash-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    margin-bottom: 5px;
+    background: linear-gradient(to right, #fff, #d4af37, #fff);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite, nameReveal 2s ease-out forwards;
+    letter-spacing: -2px;
+}
+
+.splash-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    opacity: 0;
+    animation: subtitleReveal 2s ease-out 1s forwards;
+    margin-left: 12px;
+    /* For balance with letter-spacing */
+}
+
+/* Arabesques */
+.splash-ornament {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-ornament.top {
+    top: 15%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50' fill='%23d4af37'%3E%3Cpath d='M10 40c0-10 10-20 20-20s15 5 20 10 10 10 20 10 20-10 20-20-10-10-15-5-10 10-15 15-10 5-15-5-5-10-15-10-10 5-10 10z' opacity='0.6'/%3E%3Cpath d='M20 30c5-5 10-5 15 0s10 10 15 10 10-5 15-10z'/%3E%3C/svg%3E");
+    animation: ornamentRevealTop 3s ease-out 0.5s forwards;
+}
+
+.splash-ornament.bottom {
+    bottom: 15%;
+    transform: rotate(180deg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50' fill='%23d4af37'%3E%3Cpath d='M10 40c0-10 10-20 20-20s15 5 20 10 10 10 20 10 20-10 20-20-10-10-15-5-10 10-15 15-10 5-15-5-5-10-15-10-10 5-10 10z' opacity='0.6'/%3E%3Cpath d='M20 30c5-5 10-5 15 0s10 10 15 10 10-5 15-10z'/%3E%3C/svg%3E");
+    animation: ornamentRevealBottom 3s ease-out 0.5s forwards;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes nameReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes subtitleReveal {
+    from {
+        opacity: 0;
+        letter-spacing: 30px;
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 0.9;
+        letter-spacing: 12px;
+        filter: blur(0);
+    }
+}
+
+@keyframes contentFadeIn {
+    from {
+        opacity: 0;
+        background: rgba(255, 255, 255, 0);
+    }
+
+    to {
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+@keyframes ornamentRevealTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ornamentRevealBottom {
+    from {
+        opacity: 0;
+        transform: rotate(180deg) translateY(-50px);
+    }
+
+    to {
+        opacity: 0.7;
+        transform: rotate(180deg) translateY(0);
+    }
+}
+
+@keyframes subtleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+#splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(1.1);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('../image/petalas.jpg');
+    /* Gold glitter background for content */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--text-brown);
+    line-height: 1.8;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+:root {
+    --bg-light: #f5d5d5;
+    --accent-pink: #d87a94;
+    --muted-rose: #c1335d;
+    --primary-rose: #9d1c4d;
+    --text-brown: #7d1547;
+    --dark-brown: #5a0d35;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.main-wrapper {
+    max-width: 520px;
+    margin: 0 auto; /* remove top margin so hero is flush with main-content top */
+    background-color: rgba(255,255,255,0.8);
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30)),
+        url('../image/sofia.png');
+    background-clip: padding-box;
+    background-size: 155% auto;
+    background-position: center 0%;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    min-height: 90vh;
+    padding: 340px 0 0 0; /* keeps a clear photo area before text content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    border-radius: 50px;
+    border: none;
+    box-shadow: none !important;
+    overflow: hidden;
+}
+
+/* Floral Ornaments (Fallback) */
+.floral-ornament {
+    width: 100%;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.floral-ornament.top {
+    background-image: none;
+    margin-bottom: 20px;
+}
+
+.floral-ornament.bottom {
+    background-image: none;
+    margin-top: 20px;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 8px;
+    padding: 28px 24px 0 24px;
+}
+
+.weekday-title {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    line-height: 0.95;
+    font-weight: 400;
+    color: var(--text-brown);
+}
+
+.couple-names {
+    font-family: 'Playfair Display', serif;
+    /* scale from 2.2rem up to 3.2rem based on viewport width */
+    font-size: clamp(2.4rem, 5vw + 1.2rem, 3.6rem);
+    color: var(--dark-brown);
+    font-weight: 400;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.ampersand {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--muted-rose);
+    margin: -5px 0;
+}
+
+/* Save the Date */
+.save-the-date {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 36px;
+    padding: 0 18px;
+}
+
+.save-the-date .calendar {
+    margin-bottom: 12px;
+}
+
+.layout-reference {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
+    gap: 20px;
+    align-items: center;
+}
+
+.save-the-date .date-fancy {
+    margin: 0;
+    line-height: 0.8;
+}
+
+.day-big {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(5.2rem, 12vw, 7.2rem);
+    font-weight: 700;
+    color: #d4af37;
+    letter-spacing: -4px;
+}
+
+.date-side {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+}
+
+.date-highlight {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3.8vw, 2.6rem);
+    font-weight: 400;
+    color: var(--text-brown);
+    line-height: 0.9;
+}
+
+.dot-line {
+    display: block;
+    width: 100%;
+    height: 13px;
+    background-image: radial-gradient(circle, var(--text-brown) 5px, transparent 5.2px);
+    background-size: 24px 12px;
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.date-description {
+    font-size: 1.05rem;
+    color: var(--text-brown);
+    line-height: 1.8;
+    max-width: 380px;
+    margin: 20px auto 6px;
+    font-weight: 400;
+}
+
+.floral-separator {
+    width: 80px;
+    height: 30px;
+    background: radial-gradient(circle, var(--accent-pink) 20%, transparent 20%);
+    background-size: 20px 20px;
+    margin: 20px 0;
+    opacity: 0.5;
+}
+
+/* Location */
+.location-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.location-label {
+    font-size: 1rem;
+    color: var(--text-brown);
+    font-weight: 600;
+}
+
+.location-address {
+    font-size: 0.85rem;
+    color: var(--text-brown);
+}
+
+/* Countdown timer styling */
+.countdown-section {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px 20px;
+}
+
+.countdown-label {
+    font-size: 1rem;
+    color: var(--text-brown);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.countdown-number {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: var(--primary-rose);
+    font-family: 'Cinzel', serif;
+}
+
+.countdown-unit {
+    font-size: 0.7rem;
+    color: var(--text-brown);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Interaction with icon grid */
+.interaction-section {
+    width: 100%;
+    padding: 44px 24px;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.interaction-section .header-section {
+    padding: 0;
+    margin-bottom: 4px;
+}
+
+.interaction-section .save-the-date {
+    margin-bottom: 26px;
+    padding: 0 8px;
+}
+
+.interaction-section .date-description {
+    max-width: 420px;
+    margin-top: 16px;
+}
+
+.section-label {
+    font-size: 1.1rem;
+    color: var(--text-brown);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.interaction-instruction {
+    font-size: 0.8rem;
+    color: var(--text-brown);
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.icon-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.icon-button {
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.icon-button:focus-visible {
+    outline: none;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-circle-large {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 232, 154, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7f6115;
+    background: linear-gradient(145deg, #fff3bf 0%, #f1cb5d 45%, #c9961a 100%);
+    box-shadow:
+        0 10px 22px rgba(140, 96, 12, 0.3),
+        inset 0 2px 0 rgba(255, 251, 224, 0.9),
+        inset 0 -5px 10px rgba(125, 82, 8, 0.22);
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s ease,
+        color 0.35s ease;
+}
+
+.icon-circle-large::before {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.7) 50%, transparent 65%);
+    transform: translateX(-120%) rotate(12deg);
+    transition: transform 0.8s ease;
+}
+
+.icon-circle-large:hover,
+.icon-circle-large:focus-visible {
+    transform: translateY(-4px) scale(1.06);
+    color: #5f4308;
+    box-shadow:
+        0 16px 30px rgba(140, 96, 12, 0.38),
+        inset 0 2px 0 rgba(255, 251, 224, 1),
+        inset 0 -7px 12px rgba(125, 82, 8, 0.28);
+}
+
+.icon-circle-large:hover::before,
+.icon-circle-large:focus-visible::before {
+    transform: translateX(120%) rotate(12deg);
+}
+
+.icon-circle-large:active {
+    transform: translateY(-1px) scale(1.01);
+    box-shadow:
+        0 8px 16px rgba(140, 96, 12, 0.3),
+        inset 0 3px 6px rgba(125, 82, 8, 0.24);
+}
+
+.icon-circle-large.link-icon {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.icon-circle-large i {
+    width: 40px;
+    height: 40px;
+    stroke-width: 1;
+}
+
+.icon-text {
+    font-size: 0.9rem;
+    color: var(--text-brown);
+    font-weight: 500;
+    max-width: 240px;
+}
+
+/* Footer message */
+.footer-message {
+    width: 100%;
+    background: linear-gradient(135deg, #f5e4b5 0%, #d4af37 50%, #b08d2f 100%);
+    padding: 32px 24px 40px 24px;
+    text-align: center;
+}
+
+.footer-message p {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Timeline */
+.timeline-section {
+    width: 100%;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--text-brown);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--muted-rose);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.icon-circle {
+    width: 34px;
+    height: 34px;
+    background: #fff;
+    border: 1px solid var(--muted-rose);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: var(--text-brown);
+}
+
+.icon-circle i {
+    width: 16px;
+    height: 16px;
+}
+
+.timeline-item .content {
+    width: 40%;
+}
+
+.timeline-item.left .content {
+    text-align: right;
+    margin-right: auto;
+    padding-right: 10px;
+}
+
+.timeline-item.right .content {
+    text-align: left;
+    margin-left: auto;
+    padding-left: 10px;
+}
+
+.timeline-item .time {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-brown);
+}
+
+.timeline-item .event {
+    font-size: 0.75rem;
+    color: var(--text-brown);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+    padding: 0 40px 60px 40px; /* add padding to footer as well */
+}
+
+.footer p {
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.credits {
+    font-size: 0.8rem;
+    color: var(--text-brown);
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+/* Animations */
+.animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.animate.fadeInUp {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero image styling */
+.hero-image {
+    width: 100%;
+    height: 480px; /* slightly lower to equilibrate o layout */
+    overflow: hidden;
+    margin: 0; /* no margin to stretch fully */
+}
+.hero-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* Accessibility helpers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #fff;
+    color: var(--text-brown);
+    padding: 8px 16px;
+    z-index: 2000;
+    transition: top 0.3s;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero-image {
+        height: 360px;
+    }
+
+    .main-wrapper {
+        max-width: 94%;
+        margin: 32px auto 48px auto;
+        padding: 220px 16px 40px 16px;
+        border-radius: 30px;
+        background-size: 190% auto;
+        background-position: center 2%;
+    }
+
+    .header-section {
+        padding-top: 16px;
+        margin-bottom: 0;
+    }
+
+    .weekday-title {
+        font-size: clamp(1.9rem, 8vw, 2.8rem);
+    }
+
+    .layout-reference {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .date-side {
+        gap: 8px;
+    }
+
+    .date-highlight {
+        font-size: clamp(1.4rem, 6.4vw, 2rem);
+    }
+
+    .day-big {
+        font-size: clamp(4.6rem, 20vw, 6.6rem);
+        letter-spacing: -2px;
+    }
+
+    .dot-line {
+        height: 10px;
+        background-image: radial-gradient(circle, var(--text-brown) 3.8px, transparent 4px);
+        background-size: 18px 10px;
+    }
+
+    .action-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .interaction-section {
+        padding: 36px 14px;
+    }
+
+    .interaction-section .save-the-date {
+        padding: 0 4px;
+    }
+
+    .btn-interact {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .timeline {
+        max-width: none;
+        padding: 0 10px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .timeline-item .content {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-wrapper {
+        box-shadow: none;
+    }
+
+    .hero-image {
+        height: 320px;
+    }
+
+    .save-the-date {
+        padding: 0 12px;
+    }
+}
