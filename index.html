@@ -16,113 +16,109 @@
 </head>
 
 <body>
-    <a href="#main-content" class="skip-link">Ir para o conte&uacute;do</a>
     <canvas id="particle-canvas" aria-hidden="true"></canvas>
     <div id="splash-screen" role="button" aria-label="Abrir convite" tabindex="0">
         <div class="splash-ornament top"></div>
         <div class="splash-content">
-            <h1 class="splash-name">Sofia</h1>
-            <p class="splash-subtitle">XV ANOS</p>
+            <img src="src/image/rose.png" class="splash-logo" alt="Logo da abertura">
         </div>
         <div class="splash-ornament bottom"></div>
     </div>
 
     <main id="main-content" tabindex="-1">
         <div class="main-wrapper">
-            <div class="floral-ornament top animate"></div>
+            <section class="hero-image animate" aria-label="Foto principal">
+                <img src="src/image/sofia.png" alt="Sofia">
+            </section>
 
-        <section class="interaction-section animate">
-            <header class="header-section animate">
-                <p class="weekday-title">S&aacute;bado</p>
-            </header>
+            <section class="hero-intro animate">
+                <p class="hero-kicker"></p>
+                <h1 class="hero-title">Sofia XV Anos</h1>
+                <p class="hero-subtitle">Momentos m&aacute;gicos merecem ser divididos com pessoas especiais.</p>
+            </section>
 
-            <section class="save-the-date animate">
-                <div class="calendar layout-reference">
-                    <div class="date-side">
-                        <span class="dot-line" aria-hidden="true"></span>
-                        <p class="date-highlight">Mar&ccedil;o</p>
-                        <span class="dot-line" aria-hidden="true"></span>
+            <section class="interaction-section animate">
+                <section class="save-the-date animate">
+                    <div class="date-banner" aria-label="Data do evento">
+                        <span class="date-label left">S&Aacute;BADO</span>
+                        <span class="day-big">28</span>
+                        <span class="date-label right">MAR&Ccedil;O</span>
                     </div>
-                    <p class="date-fancy"><span class="day-big">28</span></p>
-                    <div class="date-side">
-                        <span class="dot-line" aria-hidden="true"></span>
-                        <p class="date-highlight">&Agrave;s 20h</p>
-                        <span class="dot-line" aria-hidden="true"></span>
+                    <p class="date-time">&Agrave;S 20H</p>
+                    <p class="date-description">
+                        Um dia especial para uma pessoa extraordin&aacute;ria. Nestes 15 anos, vivi sonhos, aprendizados e
+                        descobertas. Para tornar esse momento ainda mais inesquec&iacute;vel, convido voc&ecirc; a compartilhar comigo
+                        esta noite &uacute;nica, ao lado de pessoas que foram t&atilde;o importantes nessa jornada.
+                    </p>
+                </section>
+
+                <section class="countdown-section animate">
+                    <p class="countdown-label">Faltam apenas</p>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">00</span>
+                            <span class="countdown-unit">DIAS</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">00</span>
+                            <span class="countdown-unit">HORAS</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutes">00</span>
+                            <span class="countdown-unit">MINUTOS</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="seconds">00</span>
+                            <span class="countdown-unit">SEGUNDOS</span>
+                        </div>
+                    </div>
+                </section>
+
+                <p class="section-label">Interagir</p>
+                <p class="interaction-instruction">Toque ou clique nos &iacute;cones para interagir!</p>
+                <div class="icon-grid">
+                    <div class="icon-item">
+                        <button class="icon-circle-large icon-button" data-action="open-location"
+                            aria-label="Abrir mapa do local da festa">
+                            <i data-lucide="map-pin"></i>
+                        </button>
+                        <p class="icon-text">Local: Pousada Na Morada, Ouro Fino - MG</p>
+                    </div>
+                    <div class="icon-item">
+                        <a href="https://wa.me/?text=Ol%C3%A1%2C%20confirmo%20minha%20presen%C3%A7a%20na%20festa%20de%2015%20anos%20da%20Sofia%21"
+                            class="icon-circle-large link-icon" target="_blank" rel="noopener"
+                            aria-label="Confirmar presen&ccedil;a pelo WhatsApp">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                        <p class="icon-text">Confirme sua presen&ccedil;a!</p>
+                    </div>
+                    <div class="icon-item">
+                        <button class="icon-circle-large icon-button" data-action="open-manual"
+                            aria-label="Ver manual do convidado">
+                            <i data-lucide="file-text"></i>
+                        </button>
+                        <p class="icon-text">Manual do convidado</p>
                     </div>
                 </div>
+            </section>
+
+            <div class="floral-separator animate"></div>
+
+            <section class="guest-manual animate" id="manual-convidado">
+                <h2 class="section-title">Manual do convidado</h2>
                 <p class="date-description">
-                    Um dia especial para uma pessoa extraordin&aacute;ria. Nestes 15 anos, vivi sonhos, aprendizados e
-                    descobertas. Para tornar esse momento ainda mais inesquec&iacute;vel, convido voc&ecirc; a compartilhar comigo
-                    esta noite &uacute;nica, ao lado de pessoas que foram t&atilde;o importantes nessa jornada.
+                    Vista-se com carinho, traga seu melhor sorriso e venha celebrar comigo essa noite inesquec&iacute;vel.
+                    Conto com a sua presen&ccedil;a para tornar este momento ainda mais especial!
                 </p>
             </section>
-            <section class="countdown-section animate">
-                <p class="countdown-label">Faltam apenas</p>
-                <div class="countdown" id="countdown">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="days">00</span>
-                        <span class="countdown-unit">DIAS</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="hours">00</span>
-                        <span class="countdown-unit">HORAS</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="minutes">00</span>
-                        <span class="countdown-unit">MINUTOS</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="seconds">00</span>
-                        <span class="countdown-unit">SEGUNDOS</span>
-                    </div>
-                </div>
-            </section>
 
-            <p class="section-label">Interagir</p>
-            <p class="interaction-instruction">Toque ou clique nos &iacute;cones para interagir!</p>
-            <div class="icon-grid">
-                <div class="icon-item">
-                    <button class="icon-circle-large icon-button" data-action="open-location"
-                        aria-label="Abrir mapa do local da festa">
-                        <i data-lucide="map-pin"></i>
-                    </button>
-                    <p class="icon-text">Local: Pousada Na Morada, Ouro Fino - MG</p>
-                </div>
-                <div class="icon-item">
-                    <a href="https://wa.me/?text=Ol%C3%A1%2C%20confirmo%20minha%20presen%C3%A7a%20na%20festa%20de%2015%20anos%20da%20Sofia%21"
-                        class="icon-circle-large link-icon" target="_blank" rel="noopener"
-                        aria-label="Confirmar presen&ccedil;a pelo WhatsApp">
-                        <i data-lucide="check-circle"></i>
-                    </a>
-                    <p class="icon-text">Confirme sua presen&ccedil;a!</p>
-                </div>
-                <div class="icon-item">
-                    <button class="icon-circle-large icon-button" data-action="open-manual"
-                        aria-label="Ver manual do convidado">
-                        <i data-lucide="file-text"></i>
-                    </button>
-                    <p class="icon-text">Manual do convidado</p>
-                </div>
-            </div>
-        </section>
+            <footer class="footer-message animate">
+                <p>Esperamos por voc&ecirc;!</p>
+            </footer>
 
-        <div class="floral-separator animate"></div>
-
-        <section class="guest-manual animate" id="manual-convidado">
-            <h2 class="section-title">Manual do convidado</h2>
-            <p class="date-description">
-                Vista-se com carinho, traga seu melhor sorriso e venha celebrar comigo essa noite inesquec&iacute;vel.
-                Conto com a sua presen&ccedil;a para tornar este momento ainda mais especial!
-            </p>
-        </section>
-
-        <footer class="footer-message animate">
-            <p>Esperamos por voc&ecirc;!</p>
-        </footer>
-
-        <footer class="footer animate">
-            <p class="credits">@gilson_dasilva</p>
-        </footer>
+            <footer class="footer animate">
+                <p class="credits">@gilson_dasilva</p>
+            </footer>
         </div> <!-- end main-wrapper -->
     </main>
 
