@@ -16,13 +16,10 @@
 </head>
 
 <body>
-    <canvas id="particle-canvas" aria-hidden="true"></canvas>
     <div id="splash-screen" role="button" aria-label="Abrir convite" tabindex="0">
-        <div class="splash-ornament top"></div>
         <div class="splash-content">
             <img src="src/image/gold.png" class="splash-logo" alt="Logo da abertura">
         </div>
-        <div class="splash-ornament bottom"></div>
     </div>
 
     <main id="main-content" tabindex="-1">
@@ -46,9 +43,10 @@
                     </div>
                     <p class="date-time">&Agrave;S 20H</p>
                     <p class="date-description">
-                        Um dia especial para uma pessoa extraordin&aacute;ria. Nestes 15 anos, vivi sonhos, aprendizados e
-                        descobertas. Para tornar esse momento ainda mais inesquec&iacute;vel, convido voc&ecirc; a compartilhar comigo
-                        esta noite &uacute;nica, ao lado de pessoas que foram t&atilde;o importantes nessa jornada.
+                       Há momentos na vida que merecem ser celebrados de forma especial.
+                       Meus 15 anos representam o inicio de uma nova etapa, cheia de sonhos, aprendizados e descobertas.
+                       Para tornar esse dia ainda mais inesquecivel, convido você a compartilhar comigo essa noite única, preparada com carinho para celebrar a vida.
+                       Com pessoas importantes que fizeram parte durante essa jornada.
                     </p>
                 </section>
 
@@ -88,7 +86,9 @@
                         <a href="https://wa.me/5535997457805?text=Ol%C3%A1%2C%20confirmo%20minha%20presen%C3%A7a%20na%20festa%20de%2015%20anos%20da%20Sofia%21"
                             class="icon-circle-large link-icon" target="_blank" rel="noopener"
                             aria-label="Confirmar presen&ccedil;a pelo WhatsApp">
-                            <i data-lucide="check-circle"></i>
+                            <svg class="icon-whatsapp" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                <path d="M13.601 2.326A7.85 7.85 0 0 0 8.009 0C3.646 0 .093 3.553.093 7.916c0 1.394.364 2.756 1.058 3.958L0 16l4.23-1.11a7.9 7.9 0 0 0 3.778.965h.003c4.363 0 7.916-3.553 7.916-7.916a7.86 7.86 0 0 0-2.326-5.613m-5.59 12.19h-.003a6.57 6.57 0 0 1-3.35-.92l-.24-.142-2.51.658.67-2.448-.156-.252a6.58 6.58 0 0 1-1.013-3.496c0-3.634 2.967-6.601 6.613-6.601a6.57 6.57 0 0 1 4.68 1.939 6.57 6.57 0 0 1 1.934 4.677c-.002 3.635-2.969 6.603-6.625 6.603m3.624-4.944c-.198-.099-1.17-.578-1.35-.644-.181-.066-.313-.099-.445.099-.132.198-.511.644-.627.776-.115.132-.231.149-.429.05-.198-.099-.836-.308-1.593-.983-.589-.525-.987-1.173-1.103-1.37-.115-.198-.012-.305.087-.404.09-.09.198-.231.297-.347.099-.115.132-.198.198-.33.066-.132.033-.248-.017-.347-.05-.099-.445-1.074-.61-1.47-.161-.387-.325-.335-.445-.341h-.379c-.132 0-.347.05-.528.248-.181.198-.693.677-.693 1.652s.71 1.917.809 2.049c.099.132 1.397 2.134 3.385 2.992.473.205.842.327 1.129.418.474.151.905.13 1.246.079.38-.057 1.17-.478 1.336-.94.165-.462.165-.858.115-.94-.05-.083-.181-.132-.38-.231"/>
+                            </svg>
                         </a>
                         <p class="icon-text">Confirme sua presen&ccedil;a!</p>
                     </div>
@@ -104,9 +104,9 @@
 
             <div class="floral-separator animate"></div>
 
-            <section class="guest-manual animate" id="manual-convidado">
-                <h2 class="section-title">Manual do convidado</h2>
-                <p class="date-description">
+            <section class="guest-manual manual-hidden" id="manual-convidado">
+                <h2 class="section-title manual-item">Manual do convidado</h2>
+                <p class="date-description manual-item">
                     Vista-se com carinho, traga seu melhor sorriso e venha celebrar comigo essa noite inesquec&iacute;vel.
                     Conto com a sua presen&ccedil;a para tornar este momento ainda mais especial!
                 </p>
@@ -117,7 +117,7 @@
             </footer>
 
             <footer class="footer animate">
-                <p class="credits">@gilson_dasilva</p>
+                <p class="credits">@gilson_dasilva <br>@Deserve</p>
             </footer>
         </div> <!-- end main-wrapper -->
     </main>
