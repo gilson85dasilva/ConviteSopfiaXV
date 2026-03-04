@@ -1040,6 +1040,32 @@ body {
         font-size: clamp(1.8rem, 8.5vw, 2.6rem);
     }
 
+    .countdown-section {
+        padding: 20px 12px;
+    }
+
+    .countdown {
+        flex-wrap: nowrap;
+        gap: 6px;
+    }
+
+    .countdown-item {
+        min-width: 0;
+        width: calc((100% - 18px) / 4);
+        padding: 4px 2px;
+    }
+
+    .countdown-number {
+        width: clamp(58px, 16vw, 68px);
+        height: clamp(58px, 16vw, 68px);
+        font-size: clamp(1.6rem, 4.8vw, 2rem);
+    }
+
+    .countdown-unit {
+        font-size: 0.58rem;
+        letter-spacing: 0.7px;
+    }
+
     .action-buttons {
         flex-direction: row;
         flex-wrap: wrap;
@@ -1130,9 +1156,26 @@ body {
         font-size: 0.95rem;
     }
 
+    .countdown-section {
+        padding: 16px 10px;
+    }
+
+    .countdown {
+        gap: 4px;
+    }
+
+    .countdown-item {
+        width: calc((100% - 12px) / 4);
+    }
+
     .countdown-number {
-        width: 68px;
-        height: 68px;
-        font-size: 2rem;
+        width: clamp(52px, 15vw, 60px);
+        height: clamp(52px, 15vw, 60px);
+        font-size: clamp(1.35rem, 4.8vw, 1.65rem);
+    }
+
+    .countdown-unit {
+        font-size: 0.52rem;
+        letter-spacing: 0.5px;
     }
 }
