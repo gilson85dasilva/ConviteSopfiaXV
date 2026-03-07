@@ -422,6 +422,8 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: clamp(4.3rem, 8.8vw, 5.6rem);
     font-weight: 700;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "lnum" 1, "tnum" 1;
     color: #be576e;
     letter-spacing: -2px;
     line-height: 1;
@@ -437,6 +439,14 @@ body {
     line-height: 1;
     letter-spacing: 0.5px;
     color: #be576e;
+}
+
+.date-time .time-unit {
+    font-size: 0.7em;
+    line-height: 1;
+    display: inline-block;
+    transform: scaleY(1.08);
+    transform-origin: bottom;
 }
 
 .date-description {
