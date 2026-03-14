@@ -932,7 +932,7 @@ body {
 /* Hero image styling */
 .hero-image {
     width: 100%;
-    height: 560px;
+    height: auto;
     overflow: hidden;
     margin: 0;
     border-bottom: 1px solid rgba(190, 87, 110, 0.18);
@@ -941,9 +941,7 @@ body {
 .hero-image img {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 28%;
+    height: auto;
 }
 
 .hero-intro {
@@ -997,7 +995,7 @@ body {
 /* Mobile Adjustments */
 @media (max-width: 768px) {
     .hero-image {
-        height: 430px;
+        height: auto;
     }
 
     .main-wrapper {
@@ -1147,7 +1145,7 @@ body {
     }
 
     .hero-image {
-        height: 340px;
+        height: auto;
     }
 
     .save-the-date {
