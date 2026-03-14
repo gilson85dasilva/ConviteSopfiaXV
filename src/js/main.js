@@ -90,6 +90,55 @@ if (typeof lucide !== 'undefined') {
     lucide.createIcons();
 }
 
+function initStarBursts() {
+    const footer = document.querySelector('.footer-message');
+    const text = footer ? footer.querySelector('p') : null;
+    if (!footer || !text) return;
+
+    const burstLayer = document.createElement('div');
+    burstLayer.className = 'star-burst';
+    burstLayer.setAttribute('aria-hidden', 'true');
+    footer.appendChild(burstLayer);
+
+    const createBurst = () => {
+        const footerRect = footer.getBoundingClientRect();
+        const textRect = text.getBoundingClientRect();
+        const centerX = textRect.left - footerRect.left + (textRect.width / 2);
+        const centerY = textRect.top - footerRect.top + (textRect.height / 2);
+        const sparks = 12;
+
+        for (let i = 0; i < sparks; i++) {
+            const spark = document.createElement('span');
+            spark.className = 'star-spark';
+
+            const angle = (Math.PI * 2 / sparks) * i + (Math.random() - 0.5) * 0.5;
+            const distance = 60 + Math.random() * 45;
+            const dx = Math.cos(angle) * distance;
+            const dy = Math.sin(angle) * distance;
+            const size = 6 + Math.random() * 6;
+            const duration = 800 + Math.random() * 400;
+
+            spark.style.setProperty('--x', `${centerX}px`);
+            spark.style.setProperty('--y', `${centerY}px`);
+            spark.style.setProperty('--dx', `${dx.toFixed(1)}px`);
+            spark.style.setProperty('--dy', `${dy.toFixed(1)}px`);
+            spark.style.setProperty('--size', `${size.toFixed(1)}px`);
+            spark.style.animationDuration = `${duration}ms`;
+
+            burstLayer.appendChild(spark);
+            spark.addEventListener('animationend', () => {
+                spark.remove();
+            });
+        }
+    };
+
+    createBurst();
+    const intervalId = setInterval(createBurst, 900);
+    window.addEventListener('beforeunload', () => clearInterval(intervalId));
+}
+
+initStarBursts();
+
 // Parallax Effect for Background
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
