@@ -733,7 +733,7 @@ body {
     color: #be576e;
     font-weight: 500;
     letter-spacing: 1px;
-    animation: invitePulseStrong 1.2s ease-in-out infinite;
+    animation: invitePulseSoft 2.4s ease-in-out infinite;
     transform-origin: center;
 }
 
@@ -747,7 +747,7 @@ body {
     pointer-events: none;
 }
 
-@keyframes invitePulseStrong {
+@keyframes invitePulseSoft {
     0%,
     100% {
         transform: translateY(0) scale(1);
@@ -756,8 +756,8 @@ body {
     }
 
     50% {
-        transform: translateY(-6px) scale(1.25);
-        text-shadow: 0 0 24px rgba(212, 175, 55, 0.7);
+        transform: translateY(-2px) scale(1.06);
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.35);
         opacity: 1;
     }
 }
